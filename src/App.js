@@ -4,7 +4,9 @@ const App = () => {
   const [keyword, setKeyword] = useState('')
   const mountedRef = useRef(false);
 
+  // This block will get execute on initial.
   useEffect(() => {
+
     // Skip the componentWillMount lifecycle.
     if (!mountedRef.current) {
       mountedRef.current = true;
@@ -19,7 +21,7 @@ const App = () => {
     // Release the recent typing timer.
     return () => clearTimeout(timeout)
 
-    // "Initial" and keyword state changes. 
+    // Execute if dependencies changes.
   }, [keyword])
 
   return (
