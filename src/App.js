@@ -11,7 +11,7 @@ const App = () => {
       return;
     }
     
-    // A second timer to detect stop typing.  
+    // A timer to detect stop typing.  
     const timeout = setTimeout(() => {
       console.log('You have stopped typing.');
     }, 1000)
