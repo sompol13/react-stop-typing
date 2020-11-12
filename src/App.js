@@ -4,9 +4,7 @@ const App = () => {
   const [keyword, setKeyword] = useState('')
   const mountedRef = useRef(false);
 
-  // When component render 1st time.
   useEffect(() => {
-
     // Skip the componentWillMount lifecycle.
     if (!mountedRef.current) {
       mountedRef.current = true;
@@ -21,7 +19,7 @@ const App = () => {
     // Release the recent timer.
     return () => clearTimeout(timeout)
 
-    // When keyword state changes. 
+    // "Initial" and keyword state changes. 
   }, [keyword])
 
   return (
