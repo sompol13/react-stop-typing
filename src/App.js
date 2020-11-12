@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useRef } from 'react';
 
-function App() {
+const App = () => {
+  const [keyword, setKeyword] = useState('')
+  const mountedRef = useRef(false);
+
+  // When component render 1st time.
+  useEffect(() => {
+
+    // Skip the componentWillMount lifecycle.
+    if (!mountedRef.current) {
+      mountedRef.current = true;
+      return;
+    }
+    
+    // A second timer to detect stop typing.  
+    const timeout = setTimeout(() => {
+      console.log('You have stopped typing.');
+    }, 1000)
+
+    // Release the recent timer.
+    return () => clearTimeout(timeout)
+
+    // When keyword state changes. 
+  }, [keyword])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <input
+      type="text"
+      value={keyword}
+      onChange={(e) => setKeyword(e.target.value)}
+    />
+  )
 }
 
 export default App;
