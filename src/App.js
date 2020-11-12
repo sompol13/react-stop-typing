@@ -16,7 +16,7 @@ const App = () => {
       console.log('You have stopped typing.');
     }, 1000)
 
-    // Release the recent timer.
+    // Release the recent typing timer.
     return () => clearTimeout(timeout)
 
     // "Initial" and keyword state changes. 
